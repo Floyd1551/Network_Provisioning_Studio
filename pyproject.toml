@@ -14,3 +14,6 @@ switch-configurator = "switch_configurator.app:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+switch_configurator = ["assets/*.ico", "assets/*.svg"]

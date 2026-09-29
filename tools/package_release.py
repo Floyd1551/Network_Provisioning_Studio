@@ -15,6 +15,8 @@ if sys.platform != "win32":
     raise SystemExit("Build the Windows release on Windows.")
 subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--windowed", "--noupx",
                 "--name", name, "--paths", str(root / "src"), "--specpath", str(root / "build"),
+                "--icon", str(root / "src/switch_configurator/assets/app.ico"),
+                "--add-data", str(root / "src/switch_configurator/assets") + ";switch_configurator/assets",
                 "--collect-submodules", "netmiko", "--copy-metadata", "netmiko", str(root / "launcher.py")], cwd=root, check=True)
 folder = root / "dist" / name
 shutil.copytree(root / "docs", folder / "docs", dirs_exist_ok=True)

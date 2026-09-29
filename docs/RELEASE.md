@@ -2,6 +2,10 @@
 
 ## Install and launch
 
+For a normal installation, download `NetworkProvisioningStudio-1.0.0rc1-Setup-x64.exe` and run it. Setup installs for the current Windows account, adds a Start menu entry and offers an optional desktop shortcut. Launch from Start. Remove the app using Windows Settings > Apps > Installed apps; saved data and credentials are preserved. The installer and application are unsigned.
+
+The portable ZIP remains available as an alternative:
+
 1. Extract the entire `NetworkProvisioningStudio-1.0.0rc1-windows-x64.zip` archive into a writable folder.
 2. Open the extracted `NetworkProvisioningStudio` folder.
 3. Run `NetworkProvisioningStudio.exe`. Keep `_internal` alongside the executable.
@@ -36,5 +40,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\build-release.ps1
 ```
 
 This invocation changes execution policy only for that process. `requirements-build.txt` pins the tested dependency set. `build-manifest.json` records the actual Python/platform/package versions. The ZIP is accompanied by a SHA-256 file. The build includes dependency license files under `third-party-licenses`; these dependencies retain their own licenses. Packaging uses [PyInstaller's folder bundle](https://pyinstaller.org/en/stable/operating-mode.html).
+
+To build the installer, install Inno Setup 6 and run `powershell -NoProfile -ExecutionPolicy Bypass -File .\build-installer.ps1`. This runs the release build and tests before compiling Setup. `-SkipBuild` reuses an already verified portable build; `-Compiler` accepts an explicit `ISCC.exe` path. The source icon is `src/switch_configurator/assets/app.svg`; regenerate its seven-size ICO with `.venv\Scripts\python.exe tools/make_icon.py` after editing the SVG. Setup uses a stable application ID so subsequent installations update the same app. It never deletes the separate user data folder or Windows Credential Manager entries.
 
 The package has been checked on the build machine. A clean Windows machine check, signing/installer decisions and exact-device qualification remain release acceptance work.

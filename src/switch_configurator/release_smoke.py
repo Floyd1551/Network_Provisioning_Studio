@@ -53,6 +53,9 @@ def run(report: Path):
                 service.apply(service.preview([item])); service.close()
                 results["checks"].append("API deploy and readback: " + adapter.id)
             window = Window(store); window.show(); app.processEvents()
+            assert not window.windowIcon().isNull(), "Application icon is missing"
+            assert not window.windowIcon().pixmap(32, 32).isNull(), "Application icon cannot render"
+            results["checks"].append("Application icon loads and renders")
             for index in range(window.tabs.count()):
                 window.tabs.setCurrentIndex(index); app.processEvents()
                 assert not window.grab().isNull()

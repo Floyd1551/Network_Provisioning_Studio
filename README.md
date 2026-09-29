@@ -1,5 +1,7 @@
 # Network Provisioning Studio 1.0 RC1
 
+**Windows installer:** run `NetworkProvisioningStudio-1.0.0rc1-Setup-x64.exe` for a per-user installation with an app icon, Start menu entry, optional desktop shortcut and uninstall support. No Python installation or administrator rights required. Saved devices and backups survive uninstall.
+
 **Portable Windows release:** extract the release ZIP and run `NetworkProvisioningStudio.exe`. No Python installation is needed for the packaged app. See [installation, upgrades and release limitations](docs/RELEASE.md). This release candidate is ready for local review and lab qualification; physical-device validation remains pending and automatic recovery is deferred.
 
 A Windows desktop MVP using Python, PySide6, pySerial and SQLite. The GUI edits a vendor-neutral configuration model; platform-specific drivers create native CLI; a serial transport exchanges commands with the switch. Stateful demos exercise each supported platform without hardware. See [supported platforms and limitations](docs/SUPPORTED_PLATFORMS.md).

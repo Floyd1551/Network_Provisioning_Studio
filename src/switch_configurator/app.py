@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 from PySide6.QtCore import Qt, QThread, Signal, QSize, QRectF
-from PySide6.QtGui import QColor, QFont, QPen, QPainter
+from PySide6.QtGui import QColor, QFont, QPen, QPainter, QIcon
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QComboBox, QLineEdit, QPlainTextEdit, QTabWidget, QSplitter,
     QListWidget, QListWidgetItem, QAbstractItemView, QDialog, QDialogButtonBox,
@@ -237,6 +237,7 @@ class Window(QMainWindow):
         self.busy = False
         self.workers = []
         self.setWindowTitle(f"Network Provisioning Studio • {__version__}")
+        self.setWindowIcon(QIcon(str(Path(__file__).parent / "assets" / "app.ico")))
         self.resize(1440, 990)
         self.setMinimumSize(1100, 740)
         root = QWidget()
@@ -726,6 +727,9 @@ def label(text, name):
 
 
 def main():
+    if sys.platform == "win32":
+        import ctypes
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("Floyd1551.NetworkProvisioningStudio")
     if "--smoke-test" in sys.argv:
         from .release_smoke import run
         index = sys.argv.index("--smoke-test")

@@ -1,0 +1,10 @@
+Network Provisioning Studio - v1.0 release candidate
+
+Setup installs the application for your Windows account. Python and administrator rights are not required. Start with Demo mode to explore the application without connecting network equipment.
+
+Device support is feature-specific. Physical-device qualification is pending and automatic recovery/rollback is not included in this release candidate. Review the documentation before using real equipment.
+
+Saved devices, history and configuration backups live in:
+%LOCALAPPDATA%\VisualSwitchConfigurator
+
+Uninstall removes the application and its shortcuts. It preserves that data folder and saved Windows Credential Manager entries. To remove stored passwords, use Forget credentials in Saved devices before uninstalling. Backups may contain device secrets.
